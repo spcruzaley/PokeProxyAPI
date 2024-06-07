@@ -487,8 +487,23 @@ public class Root {
                 this.url = value;
             }
 
+            @Override
+            public String toString() {
+                return "Ability{" +
+                        "name='" + name + '\'' +
+                        ", url='" + url + '\'' +
+                        '}';
+            }
         }
 
+        @Override
+        public String toString() {
+            return "Abilities{" +
+                    "ability=" + ability +
+                    ", isHidden=" + isHidden +
+                    ", slot=" + slot +
+                    '}';
+        }
     }
 
 
@@ -692,6 +707,13 @@ public class Root {
                 this.url = value;
             }
 
+            @Override
+            public String toString() {
+                return "Item{" +
+                        "name='" + name + '\'' +
+                        ", url='" + url + '\'' +
+                        '}';
+            }
         }
 
 
@@ -867,10 +889,42 @@ public class Root {
                     this.url = value;
                 }
 
+                @Override
+                public String toString() {
+                    return "Version{" +
+                            "name='" + name + '\'' +
+                            ", url='" + url + '\'' +
+                            '}';
+                }
             }
 
+            @Override
+            public String toString() {
+                return "VersionDetails{" +
+                        "rarity=" + rarity +
+                        ", version=" + version +
+                        '}';
+            }
         }
 
+        @Override
+        public String toString() {
+            return "HeldItems{" +
+                    "item=" + item +
+                    ", versionDetails=" + versionDetails +
+                    '}';
+        }
     }
 
+    @Override
+    public String toString() {
+        return "Root{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", baseExperience=" + baseExperience +
+                ", locationAreaEncounters='" + locationAreaEncounters + '\'' +
+                ", abilities=" + abilities +
+                ", heldItems=" + heldItems +
+                '}';
+    }
 }
