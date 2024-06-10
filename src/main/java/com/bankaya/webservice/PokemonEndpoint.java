@@ -1,6 +1,6 @@
 package com.bankaya.webservice;
 
-import com.bankaya.api.feign.PokemonClient;
+import com.bankaya.api.feign.PokemonClientService;
 import com.bankaya.database.AuditInformationService;
 import com.bankaya.schema.generated.Root;
 import com.bankaya.webservice.gen.AbilitiesRequest;
@@ -23,13 +23,13 @@ public class PokemonEndpoint {
 
     private static final String NAMESPACE_URI = "http://bankaya.com/webservice/gen";
     private final StatusComponent statusComponent;
-    private final PokemonClient pokemonClient;
+    private final PokemonClientService pokemonClientService;
     private final AuditInformationService auditInformationService;
 
     @Autowired
-    public PokemonEndpoint(StatusComponent statusComponent, PokemonClient pokemonClient,
+    public PokemonEndpoint(StatusComponent statusComponent, PokemonClientService pokemonClientService,
                            AuditInformationService auditInformationService) {
-        this.pokemonClient = pokemonClient;
+        this.pokemonClientService = pokemonClientService;
         this.statusComponent = statusComponent;
         this.auditInformationService = auditInformationService;
     }
@@ -91,7 +91,7 @@ public class PokemonEndpoint {
     private Root getPokemonData(String pokemon) {
         log.info("Setting abilities for {}", pokemon);
 
-        return pokemonClient.getPokemonByName(pokemon);
+        return pokemonClientService.getPokemonByName(pokemon);
     }
 
     private GenericResponse genericResponse(Object heldItems) {
